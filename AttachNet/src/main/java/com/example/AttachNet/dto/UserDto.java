@@ -1,54 +1,29 @@
-package com.example.AttachNet.model;
 
+package com.example.AttachNet.dto;
 
-import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-@Component
-@Entity
-@Table(name = "UserInfo")
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
     private int uid;
-
-    @Column
     private String sid;
 
-    @Column(nullable = false)
+    @NotBlank(message = "User Name can't be Blank")
+    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
     private String name;
 
-    @Column(unique = true)
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email cannot be blank")
     private String email;
 
-    @Column
+
     private int batch;
-
-    @Column
     private String dept;
-
-    @Column
     private String role;
-
-    @Column
     private String number;
 
-    public User() {
-    }
-
-    public User(int uid, String sid, String name, String email, int batch, String dept, String role, String number) {
-        this.uid = uid;
-        this.sid = sid;
-        this.name = name;
-        this.email = email;
-        this.batch = batch;
-        this.dept = dept;
-        this.role = role;
-        this.number = number;
-    }
-
-    //Getter
     public int getUid() {
         return uid;
     }
@@ -81,7 +56,6 @@ public class User {
         return number;
     }
 
-    //Setter
     public void setUid(int uid) {
         this.uid = uid;
     }
