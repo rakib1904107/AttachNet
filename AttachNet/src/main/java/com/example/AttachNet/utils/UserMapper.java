@@ -17,6 +17,7 @@ public class UserMapper {
         userDTO.setSid(user.getSid());
         userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
+        userDTO.setPassword(user.getPassword());
         userDTO.setBatch(user.getBatch());
         userDTO.setDept(user.getDept());
         userDTO.setRole(user.getRole());
@@ -31,6 +32,7 @@ public class UserMapper {
         user.setSid(userDTO.getSid());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
         user.setBatch(userDTO.getBatch());
         user.setDept(userDTO.getDept());
         user.setRole(userDTO.getRole());

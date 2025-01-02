@@ -37,6 +37,7 @@ public class UserService {
             user.setBatch(userDetails.getBatch());
             user.setDept(userDetails.getDept());
             user.setEmail(userDetails.getEmail());
+            user.setPassword(userDetails.getPassword());
             user.setRole(userDetails.getRole());
             user.setNumber(userDetails.getNumber());
             return repo.save(user);
@@ -47,5 +48,16 @@ public class UserService {
         Optional<User> user=repo.findById(uid);
         repo.deleteById(uid);
         return user;
+    }
+
+    public UserDto userLogin(String email, String password){
+        User user= repo.findByEmail(email)
+                .orElseThrow(()-> new RuntimeException("User not found"));
+
+        if(!user.getPassword().equals(password)){
+            throw new RuntimeException("Invalid Password");
+        }
+
+        return userMapper.convertToDTO(user);
     }
 }
