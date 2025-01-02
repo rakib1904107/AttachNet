@@ -18,11 +18,17 @@ public class UserDto {
     @NotBlank(message = "Email cannot be blank")
     private String email;
 
+    @NotBlank
+    @Size(min=8, message = "Password must be 8 character long")
+    private String password;
 
     private int batch;
     private String dept;
     private String role;
     private String number;
+
+    //Getter
+
 
     public int getUid() {
         return uid;
@@ -38,6 +44,10 @@ public class UserDto {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public int getBatch() {
@@ -56,6 +66,7 @@ public class UserDto {
         return number;
     }
 
+    //Setter
     public void setUid(int uid) {
         this.uid = uid;
     }
@@ -70,6 +81,10 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setBatch(int batch) {
